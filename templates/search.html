@@ -1,0 +1,31 @@
+<h1>Welcome to the search page!</h1>
+<h3>Type the word you would like to find the word count for in the search bar</h3>
+
+
+<form method="POST" action="/search">
+    {{ search_form.hidden_tag() }}
+    <table>
+        <tr>
+            <td>{{ search_form.search_field.label }}</td>
+            <td>{{ search_form.search_field(size=20) }}</td>
+            <td>{{ search_form.submit() }}</td>
+
+        </tr>
+        <tr>
+            <!-- <td>{{ search_form.submit.label }}</td>  -->
+        </tr>
+    </table>
+</form>
+
+{% if output %}
+    <div style="margin-left: 20%; margin-right: 20%; background-color: rgb(202, 200, 200); border-style: solid; padding-left: 10px;">
+        <h3>{{ first_line }}</h3>
+        {% for article in output %}  
+            <b> Title: <a href="{{ article['link'] }}">{{ article['title']}}</a><br/>
+            Word Count: {{ article['word_count'] }}
+            <hr/>
+        {%endfor%}  
+    </div>
+{% else %}
+    <h5>Sorry, no output yet. Make sure you submitted a keyword</h5>
+{% endif %}
