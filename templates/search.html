@@ -6,6 +6,8 @@
     {{ search_form.hidden_tag() }}
     <table>
         <tr>
+            <td>{{ search_form.category_field.label }}</td>
+            <td>{{ search_form.category_field() }}</td>
             <td>{{ search_form.search_field.label }}</td>
             <td>{{ search_form.search_field(size=20) }}</td>
             <td>{{ search_form.submit() }}</td>

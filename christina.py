@@ -1,10 +1,10 @@
 import requests
 from bs4 import BeautifulSoup
 
-def find_frequency(search_word):
+def find_frequency(search_word, category):
     # search_word = (input("What is your search word?")).lower()
     search_word = search_word.lower()
-    neuro_page = requests.get("https://neurosciencenews.com/neuroscience-topics/open-neuroscience-articles/")
+    neuro_page = requests.get("https://neurosciencenews.com/neuroscience-topics/{}{}".format(category, "/" if category != "" else ""))
     # print(page.content)
     page_parser = BeautifulSoup(neuro_page.text, 'html.parser')
 
